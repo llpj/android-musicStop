@@ -19,21 +19,15 @@ package com.blackcrowsteam.musicstop;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningServiceInfo;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Bundle;
-import android.text.Html;
-import android.text.method.LinkMovementMethod;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -260,7 +254,8 @@ public class StopActivity extends Activity {
 		} catch (Exception e) {
 			Debug.Log.e("BAD KILL TIME", e);
 			Toast.makeText(getApplicationContext(),
-					getString(R.string.error_bad_kill_time), 1).show();
+					getString(R.string.error_bad_kill_time), Toast.LENGTH_LONG)
+					.show();
 		}
 		// launch
 		startCountdown(kill_time);
@@ -340,24 +335,7 @@ public class StopActivity extends Activity {
 					Preferences.class));
 			return true;
 		case R.id.menuitem_about:
-			PackageInfo pInfo;
-			String version = getString(R.string.app_name);
-			try {
-				pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-				version += " " + pInfo.versionName + "<br>";
-			} catch (NameNotFoundException e) {
-				e.printStackTrace();
-			}
-
-			AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-			dialogBuilder.setTitle(getString(R.string.menu_about_label));
-			TextView textView = new TextView(this);
-			textView.setMovementMethod(LinkMovementMethod.getInstance());
-			textView.setText(Html.fromHtml(getResources().getString(
-					R.string.about).replace("%ver", version)));
-			dialogBuilder.setView(textView);
-			dialogBuilder.setPositiveButton(getString(android.R.string.ok),
-					null).show();
+			About.showAbout(this);
 			return true;
 		}
 		return false;
