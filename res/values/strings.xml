@@ -8,7 +8,7 @@
 	
 	
     <string name="prefs_title">Settings</string>
-    <string name="kill_time">900</string>
+    <string name="kill_time" translatable="false">900</string>
 	<string name="btn_go_txt">Start the countdown</string>
 	
 	<string name="txt_intro">The music will stop when the countdown is over</string>

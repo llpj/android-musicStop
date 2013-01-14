@@ -1,5 +1,5 @@
 <resources>
 
-    <integer name="np_config_longAnimTime">500</integer>
+    <integer name="np_config_longAnimTime" translatable="false">500</integer>
 
 </resources>
