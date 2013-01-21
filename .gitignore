@@ -7,3 +7,7 @@ lint.xml
 ./*/.DS_Store
 ./*/*.DS_Store
 .settings/
+ant.properties
+build.xml
+local.properties
+run.sh
